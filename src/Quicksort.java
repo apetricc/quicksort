@@ -76,7 +76,7 @@ public class Quicksort {
      swap A[i + 1] with A[r] // put pivot between left and right sides
      return i + 1 // This is the index q in QUICKSORT
 
-     * @param args
+      @param args
      */
 
     private static int partition(int[] arr, int p, int r) {
@@ -113,7 +113,7 @@ public class Quicksort {
          */
         int[] myArr1 = {5,4,3,2,1,11,34,19};
         System.out.println(arrayPrinter(myArr1));
-        quicksort(myArr1, 5, 7);
+        quicksort(myArr1, 0, myArr1.length-1);
         System.out.println(arrayPrinter(myArr1));
 
 
