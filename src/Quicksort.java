@@ -3,15 +3,12 @@
  */
 
 
+import java.util.Random;
+
 /**
  *
 
- 12 points: Once you get your partition and quicksort methods working correctly, create a recursive method called
- randomizedQuicksort as in the slides/textbook, which is extremely similar to quicksort above. Its parameters, return
- value, and purpose are the same as the above quicksort method.  The only difference is the choice of pivot.  First,
- swap a randomly selected element in the subarray with the rightmost element of the subarray, then proceed as above
- to use the rightmost element as the pivot, by invoking partition and recursing as normal for quicksort. You may use
- the the java.util.Random class as a random number generator.
+
  Do not use the Java Standard Library or other libraries, except you may use:
 
  console I/O
@@ -76,7 +73,8 @@ public class Quicksort {
      swap A[i + 1] with A[r] // put pivot between left and right sides
      return i + 1 // This is the index q in QUICKSORT
 
-      @param args
+      @param arr The array to partition.
+      @param p
      */
 
     private static int partition(int[] arr, int p, int r) {
@@ -96,6 +94,47 @@ public class Quicksort {
         return i + 1;
     }
 
+    /**
+     * 12 points: Once you get your partition and quicksort methods working correctly, create a recursive method called
+     randomizedQuicksort as in the slides/textbook, which is extremely similar to quicksort above. Its parameters, return
+     value, and purpose are the same as the above quicksort method.  The only difference is the choice of pivot.  First,
+     swap a randomly selected element in the subarray with the rightmost element of the subarray, then proceed as above
+     to use the rightmost element as the pivot, by invoking partition and recursing as normal for quicksort. You may use
+     the the java.util.Random class as a random number generator.
+     * @param arr The array to sort.
+     *
+     *            if p < r  // base case is the implied empty else case
+                     // pivot choice can be randomized here
+                     q = PARTITION(A, p, r) // split 2 subproblems at q
+                     QUICKSORT(A, p, q - 1)
+                     QUICKSORT(A, q + 1, r)
+
+
+    Before we partition, let’s instead pick the pivot x randomly, as a random value in our subarray A[p...r], inclusive.
+    Randomize the pivot choice in the top of QUICKSORT’s recursive case, right before PARTITION, with this pseudocode:
+    z = RANDOM-INT(p, r) // random int number between p and r inclusive
+    swap A[z] with A[r]
+
+
+     */
+
+    public static int returnRandom(int min, int max) {
+        return (int)Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    public static void randomizedQuicksort(int[] arr, int p, int r) {
+        if (p < r) {
+            //int z = random b/t p & r
+            Random myRand = new Random();
+            int z = myRand.nextInt(r - p +1) + p;
+            int swap = arr[z];
+            arr[r] = arr[z];
+            arr[z] = swap;
+            int q = partition(arr, p, r);
+            quicksort(arr, p, q - 1);
+            quicksort(arr, q + 1, r);
+        }
+    }
 
 
 
@@ -113,8 +152,14 @@ public class Quicksort {
          */
         int[] myArr1 = {5,4,3,2,1,11,34,19};
         System.out.println(arrayPrinter(myArr1));
-        quicksort(myArr1, 0, myArr1.length-1);
+        quicksort(myArr1, 0, myArr1.length - 1);
         System.out.println(arrayPrinter(myArr1));
+
+        int[] myArr2 = {7,8,6,3,1,11,14,9};
+        System.out.println(arrayPrinter(myArr2));
+        randomizedQuicksort(myArr2, 0, myArr2.length - 1);
+        System.out.println(arrayPrinter(myArr2));
+
 
 
 
