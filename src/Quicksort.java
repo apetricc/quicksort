@@ -118,6 +118,23 @@ public class Quicksort {
         randomizedQuicksort(myArr3Copy, 0, myArr3Copy.length - 1);
         System.out.println("After randomizedQuicksort myArr2Copy looks like this: \n" + arrayPrinter(myArr3Copy) + "\n");
 
+        int[] myArr4 = {2,44,313,92,11,90,1};
+        int[] myArr4Copy = Arrays.copyOf(myArr4,myArr4.length);
+        System.out.println("The array myArr4 starts like this: \n" + arrayPrinter(myArr4) + "\n");
+        System.out.println("The copy myArr4Copy looks like this: \n" + arrayPrinter(myArr4Copy) + "\n");
+        quicksort(myArr4, 0, myArr4.length - 1);
+        System.out.println("After quicksort myArr4 looks like this: \n" + arrayPrinter(myArr4) + "\n");
+        randomizedQuicksort(myArr4Copy, 0, myArr4Copy.length - 1);
+        System.out.println("After randomizedQuicksort myArr4Copy looks like this: \n" + arrayPrinter(myArr4Copy) + "\n");
+
+        int[] myArr5 = {88,77,13,21,99,4};
+        int[] myArr5Copy = Arrays.copyOf(myArr5,myArr5.length);
+        System.out.println("The array myArr5 starts like this: \n" + arrayPrinter(myArr5) + "\n");
+        System.out.println("The copy myArr5Copy looks like this: \n" + arrayPrinter(myArr5Copy) + "\n");
+        quicksort(myArr5, 0, myArr5.length - 1);
+        System.out.println("After quicksort myArr5 looks like this: \n" + arrayPrinter(myArr5) + "\n");
+        randomizedQuicksort(myArr5Copy, 0, myArr5Copy.length - 1);
+        System.out.println("After randomizedQuicksort myArr5Copy looks like this: \n" + arrayPrinter(myArr5Copy) + "\n");
 
 
 
