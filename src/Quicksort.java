@@ -118,21 +118,19 @@ public class Quicksort {
 
      */
 
-    public static int returnRandom(int min, int max) {
-        return (int)Math.floor(Math.random() * (max - min)) + min;
-    }
 
     public static void randomizedQuicksort(int[] arr, int p, int r) {
         if (p < r) {
             //int z = random b/t p & r
             Random myRand = new Random();
-            int z = myRand.nextInt(r - p +1) + p;
+            int z = myRand.nextInt(r - p + 1) + p;
+            System.out.println("r is: " + r + " & p is: " + p + " & z is: " + z);
             int swap = arr[z];
-            arr[r] = arr[z];
-            arr[z] = swap;
+            arr[z] = arr[r] ;
+            arr[r] = swap;
             int q = partition(arr, p, r);
-            quicksort(arr, p, q - 1);
-            quicksort(arr, q + 1, r);
+            randomizedQuicksort(arr, p, q - 1);
+            randomizedQuicksort(arr, q + 1, r);
         }
     }
 
@@ -155,7 +153,7 @@ public class Quicksort {
         quicksort(myArr1, 0, myArr1.length - 1);
         System.out.println(arrayPrinter(myArr1));
 
-        int[] myArr2 = {7,8,6,3,1,11,14,9};
+        int[] myArr2 = {5,4,3,2,1,0,11};
         System.out.println(arrayPrinter(myArr2));
         randomizedQuicksort(myArr2, 0, myArr2.length - 1);
         System.out.println(arrayPrinter(myArr2));
