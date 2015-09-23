@@ -25,19 +25,7 @@ import java.util.Random;
 public class Quicksort {
 
     /**
-     * 12 points: Implement a recursive method named quicksort. Implement quicksort as in the slides/textbook, using the
-     rightmost element of the subarray as the pivot (the "naive" pivot choice). One parameter will be an array to sort.
-     Two more parameters will be the start and end index of the subarray in which to sort. It is up to you whether the
-     upper bound is inclusive or exclusive, but comment which you chose to do -- the pseudocode uses an inclusive upper
-     bound. This method will have no return value, and its only effect will be to rearrange the given array values into
-     sorted order.
-     * QUICKSORT(A, p, r)
-     if p < r  // base case is the implied empty else case
-       q = PARTITION(A, p, r) // split 2 subproblems at q
-       QUICKSORT(A, p, q - 1)
-       QUICKSORT(A, q + 1, r)
-     else--> you're done
-
+     * quicksort is a recursive method to sort integers in an array.
      * @param arr The array to be sorted.
      * @param p  The pivot to sort the numbers around.
      * @param r  The right boundary of the subarray to be sorted.
@@ -50,11 +38,16 @@ public class Quicksort {
         }
     }
 
-    public static String arrayPrinter(int[] array){
+    /**
+     * arrayPrinter is a helper method to print the contents of an array of ints.
+     * @param arr
+     * @return a String that can be printed with System.out.print
+     */
+    public static String arrayPrinter(int[] arr){
         System.out.print("\nThe array looks like: ");
         String result = "";
-        for (int i = 0; i < array.length; i++) {
-            result += "[" + array[i] + "]";
+        for (int i = 0; i < arr.length; i++) {
+            result += "[" + arr[i] + "]";
         }
         return result;
     }
@@ -73,8 +66,15 @@ public class Quicksort {
      swap A[i + 1] with A[r] // put pivot between left and right sides
      return i + 1 // This is the index q in QUICKSORT
 
-      @param arr The array to partition.
-      @param p
+
+     */
+
+    /**
+     * partition is a helper method for the sorting methods quicksort and randomizedQuicksort
+     * @param arr
+     * @param p
+     * @param r
+     * @return
      */
 
     private static int partition(int[] arr, int p, int r) {
@@ -101,7 +101,7 @@ public class Quicksort {
      swap a randomly selected element in the subarray with the rightmost element of the subarray, then proceed as above
      to use the rightmost element as the pivot, by invoking partition and recursing as normal for quicksort. You may use
      the the java.util.Random class as a random number generator.
-     * @param arr The array to sort.
+     *
      *
      *            if p < r  // base case is the implied empty else case
                      // pivot choice can be randomized here
@@ -114,11 +114,14 @@ public class Quicksort {
     Randomize the pivot choice in the top of QUICKSORT’s recursive case, right before PARTITION, with this pseudocode:
     z = RANDOM-INT(p, r) // random int number between p and r inclusive
     swap A[z] with A[r]
-
-
      */
 
-
+    /**
+     * randomizedQuicksort uses the quicksort algorithm with a randomly chosen pivot to sort an array of numbers.
+     * @param arr The array to to perform randomizedQuicksort on.
+     * @param p  The starting point of the subarray to sort.
+     * @param r  The upper limit index of the subarray to sort.
+     */
     public static void randomizedQuicksort(int[] arr, int p, int r) {
         if (p < r) {
             //int z = random b/t p & r
@@ -133,13 +136,6 @@ public class Quicksort {
             randomizedQuicksort(arr, q + 1, r);
         }
     }
-
-
-
-
-
-
-
     public static void main(String[] args) {
         /**
          * In the main method, invoke both quicksort and randomizedQuicksort that you've implemented at least five
