@@ -45,7 +45,8 @@ public class Quicksort {
      * @param arr The array to partition.
      * @param p   The starting point (lower bounds) index of the sub-array to partition.
      * @param r   The ending point (upper bounds) index of the sub-array to partition.
-     * @return
+     * @return the index to be passed to the calling method
+     *
      */
     private static int partition(int[] arr, int p, int r) {
         int x = arr[r];
